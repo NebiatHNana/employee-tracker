@@ -1,12 +1,10 @@
-// importing inquirer and FS functionality
+
 const res = require('express/lib/response');
 const inquirer = require('inquirer');
 const db = require('./db/connection');
 
 
-// function to get all employees 
-// will query the SQL database and return employee's first name, last name, role , department and salary and manager ID
-// employee table is joined to roles table and department table
+
 function getEmployees () {
 
     let sql = `SELECT employees.id AS ID, employees.first_name AS First_Name, employees.last_name AS Last_Name, roles.title AS Role, department.name AS Department, roles.salary AS Salary, employees.manager_id AS Manager 
@@ -27,9 +25,6 @@ function getEmployees () {
         });
     }
 
-// Function to get all employees based on the department chosen by the user
-// will select all departments and provide the user what department they want to choose
-// then will query the sql databse to serach for employees based on what department they selected
 
 function getEmployeesByDepartment() {
     const departmentChoice = `Select * FROM department`;
@@ -65,9 +60,7 @@ function getEmployeesByDepartment() {
     })
 }
 
-// function to view all roles
-// will query the SQL database and return a table with roles ID, Role title, department name and salary for role
-// roles table is joined to department table
+
 function viewAllRoles (){
     let sqlViewRoles = `SELECT roles.id AS Id, roles.title AS Role, department.name AS department, roles.salary AS Salary
                 FROM roles
@@ -163,9 +156,7 @@ function deleteRole() {
     })
 }
 
-// Function to view all departments
-// queries the SQL database to return department id and department name
-// and return them in a table
+
 
 function ViewAllDepartments() {
     const sqlViewDepartments = `SELECT department.id AS ID, department.name as Department FROM department`;
@@ -180,9 +171,7 @@ function ViewAllDepartments() {
     })
 }
 
-// function to add department will query the database and give the user a list of employees that they can choose from
-// when the user chooses and employee from the list
-// another query will be sent to the dabase to delete that record
+
 
 function AddDepartment() {
     inquirer.prompt([
@@ -206,9 +195,7 @@ function AddDepartment() {
     });
 };
 
-//function to delete department 
-// will query the database for all departments and then provide them as a list of options to the user
-// when the user selects an department and a call to 'DELETE FROM' table is made with the department id
+
 function deleteDepartment() {
     const departmentSql = `SELECT * FROM department`;
     db.query(departmentSql, (err, data) => {
@@ -237,10 +224,7 @@ function deleteDepartment() {
 }
 
 
-// function to update Employee's role
-// will query the database and send teh user back a list of current employees to choose the one they wish to update
-// then another query is send to the databse to gather all existing roles and present them to the user to choose what the employee's new role is
-//then another query is sent to the database to update the cosen employee using the criteria in the array and the 'Update employees' database query
+
 
 function updateEmployeeRole() {
     const employeeSQL = `SELECT * FROM employees`;
@@ -290,10 +274,7 @@ function updateEmployeeRole() {
 
 }
 
-// Function that will get new employee information
-// prompts user for employee's first name, last name 
-// does an SQL query to provide user with the choices of current roles
-// does an SQL query to provide user with options of current employees who may be their manager
+
 function getNewEmployeeInfo (){
 
     inquirer.prompt([
@@ -357,9 +338,7 @@ function getNewEmployeeInfo (){
 });
 }
 
-//function to delete employee 
-// will query the database for all employees and then provide them as a list of options to the user
-// when the user selects an employee a call to 'DELETE FROM' table is made with the employee id
+
 function deleteEmployee() {
     const employeeSQL = 'SELECT * FROM employees';
     db.query(employeeSQL, (err, data) =>{
@@ -387,8 +366,6 @@ function deleteEmployee() {
     })
 }
 
-// function to validate the choice of the main menu each time it is displayed
-// then will call on appropriate function based on what the choice is equal to
 
 function validateChoice(choice) {
     if(choice === '["View All Employees"]') {
@@ -431,8 +408,7 @@ function validateChoice(choice) {
 
 }
 
-// this is the intial prompt to the user asking them what they would like to do
-// the result is then sent to the validateChoice function to be checked and then the apprpriate function is called
+
 function showOrAddData () {
     return inquirer.prompt([
 
