@@ -1,21 +1,18 @@
 # Employee-Tracker
 
 ### User Story
-As a user, I require a command-line programme that will track my business's personnel. I want to be able to view my departments, my personnel, and their roles by responding to command prompt inquiries. I want to be able to delete departments and create new ones as a user. As a user, I would also appreciate the capacity to modify a worker's role. I want to be able to add and remove employees as a user. I should be asked to submit the employee's name, department, and job when I request to add an employee. the name, ID, role, department, and salary of each person when I view them should then be returned..
+As a user, I require a command-line programme that will track my business's personnel. 
 ### Features
-This app features a command line interface that interacts with the user.
-This app will prompt the user with a menu to :
-View all employees
-Add an Employee
-Delete an Employee
-Update Employee Role
-View All Roles
-Add a Role
-View All departments
-Add a Department
-Delete a Department
-When a user inputs the requested data the appropriate CRUD(Create, Read, Update or Delete) action is applied to the databse.
-
+This app has a command line interface that communicates with the user.
+This app will display a menu prompting the user to:
+See a list of all employees
+Include an Employee
+Employee Update Delete Employee Position
+See All Roles
+Include a Role
+Browse All Departments
+Create a Department Remove a Department
+When a user enters the requested data, the database is subjected to the appropriate CRUD (Create, Read, Update, or Delete) action.
 
 ### badges
 ![Node.js](https://img.shields.io/badge/Nodejs-License-blue)
@@ -64,4 +61,4 @@ https://github.com/NebiatHNana/employee-tracker
 ### 
 link to video on how this app works :
 
-https://drive.google.com/file/d/1_iNPwGPmyZ_OKM3qExMj112IBZDaSKNT/view
+https://drive.google.com/file/d/1Cw7Y9-r5jfJ_38uQX4AboF2uQJJsovSC/view
