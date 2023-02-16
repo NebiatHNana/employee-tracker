@@ -54,7 +54,8 @@ https://github.com/NebiatHNana/employee-tracker
 
 ### Image of example readme.md
 
-[Employee Manager Table](https://user-images.githubusercontent.com/104470467/219484797-8e31822f-19b6-4d51-aebe-bef3629ec392.png)
+
+![Employee Manager Table](https://user-images.githubusercontent.com/104470467/219484959-fc80a41f-a950-48dd-973e-f835619acf5e.png)
 
 
 
