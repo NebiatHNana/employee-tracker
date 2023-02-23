@@ -3,6 +3,13 @@ const res = require('express/lib/response');
 const inquirer = require('inquirer');
 const db = require('./db/connection');
 
+const cTable = require('console.table');
+
+const mysql = require('mysql2');
+
+const chalk = require('chalk');
+
+require('dotenv').config()
 
 
 function getEmployees () {
@@ -76,9 +83,7 @@ function viewAllRoles (){
     });
 }
 
-// function to add role that will prompt the user for the role they wish to add and the salary for that role
-// the sends the mySQL database a query to select all departments and sends that as a coice to the user to input the department for teh role
-//then the information is gatheed into criteria array and is sent to the database as an 'Insert Into' query
+
 function addRole () {
     inquirer.prompt([
         {
@@ -124,10 +129,7 @@ function addRole () {
     })  
 }
 
-// Function to delete a role
-// queries the SQL database to return roles id and role titles
-// and return them as a choice for the user to pick which one to delete
-// then a SQL query is sent to delete the chosen role
+
  
 function deleteRole() {
     const roleSQL = `SELECT roles.id, roles.title FROM roles`;
@@ -429,3 +431,43 @@ function showOrAddData () {
 }
 
 showOrAddData()
+/*// BONUS FUNCTION TO DELETE A ROLE
+function deleteRole() {
+
+  db.query('SELECT role.id, role.title FROM employee_db.role;', function (err, results) {
+    if (err) throw err;
+    console.log("");
+    const whichRole = results.map(({ id, title}) => ({ name: title, value: id }));
+
+    inquirer.prompt([
+      {
+        type: "list",
+        name: "role",
+        message: "Which employee would you like to delete? ",
+        choices: whichRole,
+      },
+    ])
+      .then((roleChoice) => {
+
+        let sql = `DELETE FROM role WHERE id = ?`;
+
+        db.query(sql, roleChoice.role, (error, results) => {
+          if (error)
+            return console.error(error.message);
+        
+          console.log('Deleted Row(s):', results.affectedRows);
+        });      
+        console.log("");
+        viewAllRoles();
+        console.log("");
+
+          //BACK TO MAIN MENU
+          mainFunc();
+        });
+      });
+}
+
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
